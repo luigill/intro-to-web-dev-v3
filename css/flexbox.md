@@ -1,0 +1,31 @@
+# Flexbox
+
+- Maneira recente de movimentar elementos em uma página.
+- É um jeito de organizar itens em linhas ou colunas.
+- flex-container é um elemento que tem display:flex como propriedade CSS.
+- flex-item é um elemento filho de um flex-container.
+- Pode-se aninhar flex-containers e flex-itens.
+- Atalho flex: Utilizando a declaração flex um elemento, essa declaração expande-se para 3.
+  - flex-grow: Espera 1 número como parâmetro, e esse número é usado como o "fator de crescimento" do flex-item.
+  - flex-shrink: Espera 1 número como parâmetro, e esse número é usado como o "fator de decrescimento" do flex-item.
+  - flex-basis: Define o tamanho inicial do flex-item.
+- Eixos: Orientação de itens dentro de um flex-container.
+  - Controlado pela propriedade flex-direction.
+  - O flexbox pode funcionar tanto no eixo horizontal como no eixo vertical.
+  - flex-direction pode ser row ou column.
+  - flex-containers sempre possuem dois eixos: O principal e o cross.
+  - flex-direction: column não funciona como esperado quando utiliza-se flex:1.
+    - Pois o flex-basis começa em 0, dessa maneira pode-se ter erros em divs vazias, já que essas não possuem height, por exemplo.
+    - Utiliza-se o flex-basis no auto.
+- Alinhamento de Itens
+  - flex também é muito utilizado para se organizar itens que possuem tamanhos específicos.
+  - justify-content: Alinha itens entre o eixo principal.
+    - space-between: Adiciona espaço entre os elementos.
+    - center: Centraliza os elementos dentro do container.
+    - flex-start
+    - flex-end
+    - space-around
+    - space-evenly
+  - align-items: Muda o posicionamento de itens no eixo cross.
+  - align-self: Modifica o posicionamento de somente um elemento.
+  - gap: Funciona uma margin, adiciona espaço entre os flex-items.
