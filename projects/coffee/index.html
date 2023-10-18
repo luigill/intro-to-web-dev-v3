@@ -3,7 +3,52 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="https://btholt.github.io/complete-intro-to-web-dev-v3/images/coffee_masters_logo.png"
+      type="image/x-icon"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
     <title>Checkout - Coffee Masters</title>
   </head>
-  <body></body>
+  <body>
+    <header class="header">
+      <img
+        src="https://btholt.github.io/complete-intro-to-web-dev-v3/images/coffee_masters_logo.png"
+        alt="Coffe Masters Logo"
+      />
+      <h1>Coffee Masters</h1>
+    </header>
+    <div class="content">
+      <div class="cards">
+        <div class="items card">
+          <h4>ITEMS</h4>
+          <input type="text" />
+          <input type="text" />
+        </div>
+        <div class="right-cards">
+          <div class="name card">
+            <h4>NAME</h4>
+            <input type="text" />
+          </div>
+          <div class="payment-info card">
+            <h4>PAYMENT</h4>
+            <input type="text" />
+            <input type="text" />
+          </div>
+        </div>
+      </div>
+      <div class="payment">
+        <p>Subtotal: R$25,00</p>
+        <p>Taxas: R$3,00</p>
+        <p><b>Total: R$28,00</b></p>
+      </div>
+      <button class="order-btn">Place Order</button>
+    </div>
+    <footer class="footer"><h3>Frontend Masters Project</h3></footer>
+  </body>
 </html>
