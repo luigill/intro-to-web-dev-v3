@@ -1,55 +1,98 @@
-// Digitos e operações disponíveis
-const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-const operators = ["x", "/", "+", "-"];
-const resets = ["=", "C", "D"];
+let buffer = "0";
+let operadorAnterior;
+let montanteTotal = 0;
 
-// Inicializa as variáveis
-let operator1 = null;
-let operator2 = null;
-let operation = null;
-
-function makeOperation(op1, op2, operator) {
-  if (operator === "x") {
-    return op1 * op2;
-  }
-  if (operator === "/") {
-    return op1 / op2;
-  }
-  if (operator === "+") {
-    return op1 + op2;
-  }
-  if (operator === "-") {
-    return op1 - op2;
-  }
-}
-
-function clearOperation() {}
-
-// Recebe Display do DOM
+let operations = document.querySelector(".opt-btns");
+let number = document.querySelector(".number-btn");
+let reset = document.querySelector(".reset-btn");
 let display = document.querySelector(".display");
-console.log(display);
 
-// Funciona como um main
-let getButtonClick = document
-  .querySelector(".btn-area")
-  .addEventListener("click", function (event) {
-    let variable = event.target.innerText;
-    rerender(variable);
-    if (variable == "DEL") {
-      variable = "D";
-    }
+display.innerText = buffer;
 
-    if (variable == "C") {
-      clearOperation();
-    }
-    if (variable == "D") {
-    }
-  });
+number.addEventListener("click", function (event) {
+  console.log(event.target.innerText);
+  handleNumber(event.target.innerText);
+});
 
-if (operator1 != null && operator2 != null && operation != null) {
-  makeOperation(operator1, operator2, operation);
+operations.addEventListener("click", function (event) {
+  console.log(event.target.innerText);
+});
+
+reset.addEventListener("click", function (event) {
+  console.log(event.target.innerText);
+});
+
+function handleNumber(value) {
+  if (buffer === "0") {
+    buffer = value;
+  } else {
+    buffer += value;
+  }
+  rerender();
+  console.log(buffer);
 }
 
-function rerender(element) {
-  display.innerText = element;
+function handleMath(value) {
+  if (buffer === "0") {
+    return;
+  }
+
+  const intBuffer = parseInt(buffer);
+  if (montanteTotal === 0) {
+    montanteTotal = intBuffer;
+  } else {
+    makeOperation(intBuffer);
+  }
+
+  operadorAnterior = valor;
+
+  buffer = "0";
+}
+
+function handleSymbol(value) {
+  switch (value) {
+    case "C":
+      buffer = "0";
+      montanteTotal = 0;
+      break;
+    case "=":
+      if (operadorAnterior === null) {
+        return;
+      }
+      makeOperation(parseInt(buffer));
+      operadorAnterior = null;
+      buffer = +montanteTotal;
+      montanteTotal = 0;
+      break;
+    case "D":
+      if (buffer.length === 1) {
+        buffer = "0";
+      } else {
+        buffer = buffer.substring(0, buffer.length - 1);
+      }
+      break;
+    case "+":
+    case "-":
+    case "x":
+    case "/":
+
+    default:
+      break;
+  }
+}
+
+function makeOperation(intBuffer) {
+  if (operadorAnterior === "+") {
+    montanteTotal += intBuffer;
+  } else if (operadorAnterior === "-") {
+    montanteTotal -= intBuffer;
+  } else if (operadorAnterior === "×") {
+    montanteTotal *= intBuffer;
+  } else {
+    montanteTotal /= intBuffer;
+  }
+}
+
+function rerender() {
+  display.innerText = buffer;
 }
